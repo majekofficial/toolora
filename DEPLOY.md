@@ -14,3 +14,10 @@ Before going live:
 
 GPA/CGPA use a 5.0 scale: A=5, B=4, C=3, D=2, E=1, F=0.
 Policy: no interest-based calculators (loans, mortgages, compound interest, etc.).
+
+V1.3 FEATURES
+- Instant results (no button), copy result, share link with numbers prefilled
+- "How it's calculated" + worked example on every calculator
+- Currency picker (saved on the visitor's device), dark mode, working Tools menu with search
+- Empty ad slots (data-slot="below-tool" and "content") ready for AdSense
+- Analytics: open source/app.js and put your Google Analytics ID in GA_ID (ask Claude to do this for you)
