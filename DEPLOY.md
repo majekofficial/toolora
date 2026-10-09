@@ -21,3 +21,8 @@ V1.3 FEATURES
 - Currency picker (saved on the visitor's device), dark mode, working Tools menu with search
 - Empty ad slots (data-slot="below-tool" and "content") ready for AdSense
 - Analytics: open source/app.js and put your Google Analytics ID in GA_ID (ask Claude to do this for you)
+
+V1.4 (Part 1: Mathematics)
+- New: Algebra Solver, Linear Equation, Quadratic Equation, Simultaneous Equations, Change the Subject, plus the Mathematics page (mathematics.html)
+- Copy and Share are icons inside the result box. Share offers image, PDF, link and text
+- source/math.js = algebra engine, source/solvers.js = screens, graphs and sharing

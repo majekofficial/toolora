@@ -52,6 +52,8 @@ body{font-size:15px;line-height:1.55}
 
 
 
+
+
 /* Header controls, menu, actions, dark mode, ad slots */
 .hctl{display:flex;gap:6px;align-items:center}.hctl select,.hctl button{height:34px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:9px;padding:0 9px;font-size:13px;font-weight:700}
 .mobile-menu{display:inline-block!important}.nav-links{display:none!important}
@@ -66,9 +68,28 @@ body{font-size:15px;line-height:1.55}
 :root[data-theme=dark] .result{background:#10223f;border-color:#1f3f75}:root[data-theme=dark] .result small,:root[data-theme=dark] .arrow,:root[data-theme=dark] .link{color:#8db8ff}
 :root[data-theme=dark] .eyebrow,:root[data-theme=dark] .chip.active,:root[data-theme=dark] .chip:hover{background:#14305c;border-color:#27487f;color:#a9c9ff}
 :root[data-theme=dark] .notice{background:#2a2410;border-color:#5a4c14;color:#e8d48a}
+/* Part1 */
+.rwrap{position:relative}.rwrap .result{padding-right:92px}.result strong{word-break:break-word}
+.ricons{position:absolute;top:8px;right:8px;display:flex;gap:6px}
+.ib{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0}.ib:hover{border-color:#93b8ff;color:#1d4ed8}
+.pop{position:absolute;right:0;top:42px;z-index:5;min-width:200px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(11,27,58,.2);padding:6px;display:grid}.pop[hidden]{display:none}
+.pop button{text-align:left;background:none;border:0;padding:11px 12px;border-radius:8px;font-size:14px;font-weight:650;color:var(--text);cursor:pointer}.pop button:hover{background:var(--surface2)}
+.work{margin-top:10px}.steps{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}.steps h3{margin:0 0 8px;font-size:14px}
+.steps ol{margin:0;padding-left:20px;font-size:14px;line-height:1.65}.steps li{margin-bottom:3px;word-break:break-word}.ok{color:#059669;font-weight:700;font-size:13px;margin:6px 0 0}
+.err{background:#fff4e5;border:1px solid #ffd59e;color:#7a4b00;border-radius:12px;padding:10px 12px;font-size:14px}
+.ln{padding:7px 0;font-size:14px;border-bottom:1px solid var(--line);word-break:break-word}.ln.muted{color:var(--muted)}.steps .ln:last-child{border-bottom:0}
+.kp{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.kp button{min-width:38px;height:38px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:16px;font-weight:700;padding:0 8px}
+.exs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px;font-size:12px;color:var(--muted)}.exs .chip{padding:4px 9px;font-size:12px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.eqp{font-size:19px;font-weight:800;text-align:center;padding:10px;background:var(--surface2);border-radius:10px;margin-bottom:10px;word-break:break-word}
+.evals{display:flex;flex-wrap:wrap;gap:8px}.ev{display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px}.ev input{width:84px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);font-size:15px}
+#plot{width:100%;display:block;margin-top:8px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0b1b3a;color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;font-weight:650;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90%}#toast.on{opacity:1}
+.card.soon{opacity:.6}.subj{display:flex;gap:8px;margin-bottom:10px}.subj a{flex:1;padding:12px;border-radius:12px;background:#2563eb;color:#fff;font-weight:800;text-align:center}
+:root[data-theme=dark] .err{background:#2a2410;border-color:#5a4c14;color:#e8d48a}:root[data-theme=dark] .ok{color:#34d399}
+textarea#q,input#q{font-size:17px}
 </style><meta name="theme-color" content="#0b1b3a"></head><body data-slug="time-duration-calculator"><header class="site-header"><div class="container nav"><a class="brand" href="index.html"><span class="wordmark">toolo<b>r</b>a</span></a><nav class="nav-links"><a href="index.html">Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav><div class="hctl"><select id="cur" aria-label="Currency"></select><button id="theme" aria-label="Toggle dark mode">🌙</button><button class="mobile-menu" id="menubtn">☰ Tools</button></div></div></header><main><section class="tool-hero"><div class="container"><div class="crumb"><a href="index.html">Toolora</a> / Time</div><h1 id="tool-title">Time Duration Calculator</h1><p id="tool-desc">Calculate the time between two clock times.</p></div></section><section class="container tool-layout"><div class="panel"><h2>Calculate</h2><form id="tool-form" class="fields"></form></div><aside class="panel side"><h3>Quick guide</h3><ul><li>Choose a start and end time.</li><li>Your calculations happen in your browser.</li><li>Check your inputs before using an answer for an important decision.</li></ul></aside></section><div class="ad-slot" data-slot="below-tool"></div><section class="container content-section"><h2>How to use this calculator</h2><p>Choose a start and end time.</p><h2>How it's calculated</h2><p>Duration = end time − start time. If the end is earlier, it is counted past midnight.</p><h2>Worked example</h2><p>22:30 to 06:15 is 7 hours 45 minutes.</p><h2>Frequently asked questions</h2><div class="faq"><details><summary>Is Toolora free?</summary><p>Yes. Toolora tools are designed to be free to use.</p></details><details><summary>Do I need an account?</summary><p>No. The calculator works directly in your browser without an account.</p></details></div><div class="ad-slot" data-slot="content"></div><h2 style="margin-top:42px">Related tools</h2><div class="related"><a class="card" href="percentage-calculator.html"><div class="icon">∑</div><h3>Percentage Calculator</h3><p>Enter a number and the percentage you want to calculate.</p><span class="arrow">Open tool →</span></a><a class="card" href="fraction-calculator.html"><div class="icon">∑</div><h3>Fraction Calculator</h3><p>Use fractions such as 3/4 and 2/3.</p><span class="arrow">Open tool →</span></a><a class="card" href="average-calculator.html"><div class="icon">∑</div><h3>Average Calculator</h3><p>Separate numbers with commas.</p><span class="arrow">Open tool →</span></a></div><p class="note">Last updated October 2026. Results are estimates for guidance. Calculations run in your browser and are not stored.</p></section></main><footer class="footer"><div class="container footer-inner"><div>© 2026 Toolora. Simple tools for everyday decisions.</div><div class="footer-links"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></footer><script>
 
-const TOOLS=[{"id": "gpa-calculator", "name": "GPA Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Add your courses, credits and grades. Instant GPA on a 5.0 scale."}, {"id": "cgpa-calculator", "name": "CGPA Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Add each semester\'s GPA and credits to get your overall CGPA."}, {"id": "grade-calculator", "name": "Grade Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Enter the points you earned and the total possible points."}, {"id": "final-grade-calculator", "name": "Final Grade Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Enter your current grade, target grade, and the weight of your current work."}, {"id": "study-time-calculator", "name": "Study Time Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Enter your available study minutes and number of subjects."}, {"id": "percentage-calculator", "name": "Percentage Calculator", "cat": "Math", "icon": "\u2211", "desc": "Enter a number and the percentage you want to calculate."}, {"id": "fraction-calculator", "name": "Fraction Calculator", "cat": "Math", "icon": "\u2211", "desc": "Use fractions such as 3/4 and 2/3."}, {"id": "average-calculator", "name": "Average Calculator", "cat": "Math", "icon": "\u2211", "desc": "Separate numbers with commas."}, {"id": "age-calculator", "name": "Age Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose your date of birth."}, {"id": "date-calculator", "name": "Date Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose a start date and an end date."}, {"id": "time-duration-calculator", "name": "Time Duration Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose a start and end time."}, {"id": "countdown-calculator", "name": "Countdown Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose a future target date."}, {"id": "savings-goal-calculator", "name": "Savings Goal Calculator", "cat": "Money", "icon": "$", "desc": "Enter your target, current savings and months remaining."}, {"id": "salary-calculator", "name": "Salary Calculator", "cat": "Money", "icon": "$", "desc": "Choose the salary amount and how often you are paid."}, {"id": "discount-calculator", "name": "Discount Calculator", "cat": "Money", "icon": "$", "desc": "Enter the original price and discount percentage."}, {"id": "tip-calculator", "name": "Tip Calculator", "cat": "Money", "icon": "$", "desc": "Enter the bill amount and tip percentage."}, {"id": "tax-calculator", "name": "Tax Calculator", "cat": "Money", "icon": "$", "desc": "This is a general calculator, not jurisdiction-specific tax advice."}, {"id": "currency-converter", "name": "Currency Converter", "cat": "Money", "icon": "$", "desc": "Enter an amount and the current rate: target currency per 1 unit of source currency."}, {"id": "unit-converter", "name": "Unit Converter", "cat": "Everyday", "icon": "\u25cc", "desc": "Choose a conversion and enter a value."}, {"id": "bmi-calculator", "name": "BMI Calculator", "cat": "Everyday", "icon": "\u25cc", "desc": "Check your BMI in metric or US units, with your healthy weight range."}];
+const TOOLS=[{"id": "gpa-calculator", "name": "GPA Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Add your courses, credits and grades. Instant GPA on a 5.0 scale."}, {"id": "cgpa-calculator", "name": "CGPA Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Add each semester's GPA and credits to get your overall CGPA."}, {"id": "grade-calculator", "name": "Grade Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Enter the points you earned and the total possible points."}, {"id": "final-grade-calculator", "name": "Final Grade Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Enter your current grade, target grade, and the weight of your current work."}, {"id": "study-time-calculator", "name": "Study Time Calculator", "cat": "Student", "icon": "\ud83c\udf93", "desc": "Enter your available study minutes and number of subjects."}, {"id": "percentage-calculator", "name": "Percentage Calculator", "cat": "Math", "icon": "\u2211", "desc": "Enter a number and the percentage you want to calculate."}, {"id": "fraction-calculator", "name": "Fraction Calculator", "cat": "Math", "icon": "\u2211", "desc": "Use fractions such as 3/4 and 2/3."}, {"id": "average-calculator", "name": "Average Calculator", "cat": "Math", "icon": "\u2211", "desc": "Separate numbers with commas."}, {"id": "age-calculator", "name": "Age Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose your date of birth."}, {"id": "date-calculator", "name": "Date Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose a start date and an end date."}, {"id": "time-duration-calculator", "name": "Time Duration Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose a start and end time."}, {"id": "countdown-calculator", "name": "Countdown Calculator", "cat": "Time", "icon": "\u25f7", "desc": "Choose a future target date."}, {"id": "savings-goal-calculator", "name": "Savings Goal Calculator", "cat": "Money", "icon": "$", "desc": "Enter your target, current savings and months remaining."}, {"id": "salary-calculator", "name": "Salary Calculator", "cat": "Money", "icon": "$", "desc": "Choose the salary amount and how often you are paid."}, {"id": "discount-calculator", "name": "Discount Calculator", "cat": "Money", "icon": "$", "desc": "Enter the original price and discount percentage."}, {"id": "tip-calculator", "name": "Tip Calculator", "cat": "Money", "icon": "$", "desc": "Enter the bill amount and tip percentage."}, {"id": "tax-calculator", "name": "Tax Calculator", "cat": "Money", "icon": "$", "desc": "This is a general calculator, not jurisdiction-specific tax advice."}, {"id": "currency-converter", "name": "Currency Converter", "cat": "Money", "icon": "$", "desc": "Enter an amount and the current rate: target currency per 1 unit of source currency."}, {"id": "unit-converter", "name": "Unit Converter", "cat": "Everyday", "icon": "\u25cc", "desc": "Choose a conversion and enter a value."}, {"id": "bmi-calculator", "name": "BMI Calculator", "cat": "Everyday", "icon": "\u25cc", "desc": "Check your BMI in metric or US units, with your healthy weight range."}, {"id": "algebra-solver", "name": "Algebra Solver", "cat": "Math", "icon": "\u0192", "desc": "Type any expression or equation. Get it simplified, factorised or solved, with steps and a graph."}, {"id": "linear-equation-calculator", "name": "Linear Equation Calculator", "cat": "Math", "icon": "=", "desc": "Solve equations like 3x + 5 = 20 with every step shown."}, {"id": "quadratic-equation-calculator", "name": "Quadratic Equation Calculator", "cat": "Math", "icon": "x\u00b2", "desc": "Enter a, b and c. Get the roots, vertex, factors, steps and a graph."}, {"id": "simultaneous-equations-calculator", "name": "Simultaneous Equations Calculator", "cat": "Math", "icon": "\u21c4", "desc": "Solve 2, 3 or more linear equations at once, with the elimination steps."}, {"id": "change-of-subject-calculator", "name": "Change the Subject of a Formula", "cat": "Math", "icon": "\u21cc", "desc": "Rearrange any formula, like v = u + at, to make a different letter the subject."}];
 const $=s=>document.querySelector(s);
 const num=v=>{const n=Number(v);return Number.isFinite(n)?n:null};
 const fmt=(n,d=2)=>Number(n).toLocaleString(undefined,{maximumFractionDigits:d});
@@ -76,7 +97,7 @@ function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a||1
 function reduce(n,d){if(d===0)return null;if(d<0){n=-n;d=-d}const g=gcd(n,d);return [n/g,d/g]}
 function parseFraction(s){const m=String(s).trim().match(/^(-?\d+)\s*\/\s*(-?\d+)$/);if(!m||Number(m[2])===0)return null;return {n:Number(m[1]),d:Number(m[2])}}
 function setResult(v){const el=$('#result');if(el)el.innerHTML='<small>Result</small><strong>'+v+'</strong>'}
-function calculate(slug,live){
+function calculate(slug,live){if(SOLVERS[slug])return SOLVERS[slug].run();
  const v=id=>num($('#'+id)?.value);
  let out='Enter valid values.';
  try {
@@ -113,7 +134,7 @@ const rowHTML=k=>k==='gpa'?'<div class="row"><input placeholder="Course (optiona
 const rowsHTML=k=>'<div class="rows" id="rows"><div class="rowh"><span>'+(k==='gpa'?'Course':'Semester')+'</span><span>'+(k==='gpa'?'Credits':'GPA')+'</span><span>'+(k==='gpa'?'Grade':'Credits')+'</span></div>'+rowHTML(k).repeat(k==='gpa'?5:3)+'</div><div class="rowact"><button type="button" class="link" id="addrow">+ add more '+(k==='gpa'?'courses':'semesters')+'</button><button type="button" class="link" id="clear">Clear</button></div>'+(k==='gpa'?'<div class="hint">5.0 scale: A=5, B=4, C=3, D=2, E=1, F=0.</div>':'');
 const bmiFields=()=>BMI.u==='us'?'<div class="two"><div class="field"><label for="hf">Height (ft)</label><input id="hf" type="number" inputmode="decimal" min="0"></div><div class="field"><label for="hi">Height (in)</label><input id="hi" type="number" inputmode="decimal" min="0"></div></div><div class="field"><label for="w">Weight (lb)</label><input id="w" type="number" inputmode="decimal" min="0"></div>':'<div class="field"><label for="h">Height (cm)</label><input id="h" type="number" inputmode="decimal" min="0"></div><div class="field"><label for="w">Weight (kg)</label><input id="w" type="number" inputmode="decimal" min="0"></div>';
 const bmiHTML=()=>'<div class="tabs"><button type="button" class="tab on" data-u="m">Metric</button><button type="button" class="tab" data-u="us">US units</button></div><div class="field"><label for="age">Age (optional)</label><input id="age" type="number" inputmode="numeric" min="2" max="120"></div><div id="bu" class="fields">'+bmiFields()+'</div>';
-function extra(slug,form){
+function extra(slug,form){if(SOLVERS[slug]&&SOLVERS[slug].init)SOLVERS[slug].init(form);
  const live=()=>calculate(slug);
  if(slug==='gpa-calculator'||slug==='cgpa-calculator'){const k=slug[0]==='g'?'gpa':'cgpa',rows=$('#rows');
   $('#addrow').onclick=()=>{for(let i=0;i<3;i++)rows.insertAdjacentHTML('beforeend',rowHTML(k))};
@@ -123,7 +144,7 @@ function extra(slug,form){
 }
 
 function initTool(){const slug=document.body.dataset.slug;if(!slug)return;const t=TOOLS.find(x=>x.id===slug);if(!t)return;const title=$('#tool-title');if(title)title.textContent=t.name;const desc=$('#tool-desc');if(desc)desc.textContent=t.desc;const form=$('#tool-form');if(!form)return;
- let fields='';
+ let fields='';if(SOLVERS[slug])fields=SOLVERS[slug].ui;
  const input=(id,label,type='number',placeholder='')=>`<div class="field"><label for="${id}">${label}</label><input id="${id}" type="${type}" ${placeholder?'placeholder="'+placeholder+'"':''}></div>`;
  if(slug==='percentage-calculator')fields=input('a','Number')+input('b','Percentage (%)');
  if(slug==='average-calculator')fields='<div class="field"><label for="a">Numbers</label><textarea id="a" rows="5" placeholder="10, 20, 30, 40"></textarea><div class="hint">Separate values with commas.</div></div>';
@@ -144,7 +165,7 @@ function initTool(){const slug=document.body.dataset.slug;if(!slug)return;const 
  if(slug==='gpa-calculator')fields=rowsHTML('gpa');
  if(slug==='cgpa-calculator')fields=rowsHTML('cgpa');
  if(slug==='fraction-calculator')fields=input('a','Fraction 1','text','3/4')+input('b','Fraction 2','text','2/3')+'<div class="field"><label for="op">Operation</label><select id="op"><option>+</option><option>-</option><option>×</option><option>÷</option></select></div>';
- form.innerHTML=fields+'<button class="btn" type="button" id="calculate">Calculate</button><div class="result" id="result" aria-live="polite"><small>Result</small><strong>—</strong></div><div class="acts"><button type="button" class="link" id="copy">Copy result</button><button type="button" class="link" id="share">Share</button></div>';
+ form.innerHTML=fields+'<button class="btn" type="button" id="calculate">Calculate</button><div class="rwrap"><div class="result" id="result" aria-live="polite"><small>Result</small><strong>—</strong></div>'+RICONS+'</div><div id="work" class="work"></div>';
  $('#calculate').addEventListener('click',()=>calculate(slug));extra(slug,form);features(slug,form,t);
  form.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();calculate(slug)}})
 }
@@ -162,29 +183,335 @@ function initChrome(){
  const cs=$('#cur');if(cs){cs.innerHTML=CURS.map(c=>'<option'+(c===CUR?' selected':'')+'>'+c+'</option>').join('');cs.onchange=()=>{CUR=cs.value;ls.set('cur',CUR);const s=document.body.dataset.slug;if(s&&$('#tool-form'))calculate(s,true)}}
  const mb=$('#menubtn');if(mb){const m=document.createElement('div');m.id='menu';m.hidden=true;
   const groups=[...new Set(TOOLS.map(t=>t.cat))];
-  m.innerHTML='<div class="container"><input id="msearch" class="search" placeholder="Search tools..." aria-label="Search tools"><div id="mlist"></div></div>';document.body.appendChild(m);
+  m.innerHTML='<div class="container"><div class="subj"><a href="mathematics.html">📐 Mathematics</a></div><input id="msearch" class="search" placeholder="Search tools..." aria-label="Search tools"><div id="mlist"></div></div>';document.body.appendChild(m);
   const draw=q=>{q=(q||'').toLowerCase();$('#mlist').innerHTML=groups.map(g=>{const l=TOOLS.filter(t=>t.cat===g&&t.name.toLowerCase().includes(q));return l.length?'<h4>'+g+'</h4><div class="mg">'+l.map(t=>'<a href="'+t.id+'.html">'+t.icon+' '+t.name+'</a>').join('')+'</div>':''}).join('')||'<p class="hint">No tools found.</p>'};
   draw();$('#msearch').oninput=e=>draw(e.target.value);
   mb.onclick=()=>{m.hidden=!m.hidden;if(!m.hidden)$('#msearch').focus()}}
 }
 function features(slug,form,t){
  const cb=$('#calculate');if(cb)cb.style.display='none';
- const OPT=['age','saved','people','hi','msearch'];let tm;const live=()=>{const miss=[...form.querySelectorAll('input[id],textarea[id]')].some(e=>!OPT.includes(e.id)&&e.value.trim()==='');if(miss){setResult('—');return}calculate(slug,true);clearTimeout(tm);tm=setTimeout(()=>{const r=$('#result strong');if(r&&r.textContent!=='—')track('calculation',{tool:slug})},1200)};
+ const OPT=['age','saved','people','hi','msearch'];let tm;const live=()=>{if(SOLVERS[slug]){SOLVERS[slug].run();return}const miss=[...form.querySelectorAll('input[id],textarea[id]')].some(e=>!OPT.includes(e.id)&&e.value.trim()==='');if(miss){setResult('—');return}calculate(slug,true);clearTimeout(tm);tm=setTimeout(()=>{const r=$('#result strong');if(r&&r.textContent!=='—')track('calculation',{tool:slug})},1200)};
  form.addEventListener('input',live);form.addEventListener('change',live);
  const q=new URLSearchParams(location.search);
  if(q.get('u')==='us'){const b=form.querySelector('.tab[data-u=us]');if(b)b.click()}
  q.forEach((v,k)=>{const e=document.getElementById(k);if(e&&k!=='u'&&'value' in e)e.value=v});
- if([...q.keys()].length)calculate(slug,true);
+ if([...q.keys()].length){calculate(slug,true);q.forEach((v,k)=>{const e=document.getElementById(k);if(e&&k!=='u'&&'value' in e)e.value=v});calculate(slug,true)}
  const txt=()=>$('#result strong').innerText.replace(/\n+/g,' · ');
  const flash=(b,m)=>{const o=b.textContent;b.textContent=m;setTimeout(()=>b.textContent=o,1600)};
  const copy=s=>(navigator.clipboard?navigator.clipboard.writeText(s):Promise.reject()).catch(()=>{const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();if(!ok)throw 0});
- $('#copy').onclick=function(){const r=txt();if(r==='—')return flash(this,'Nothing yet');copy(t.name+': '+r).then(()=>flash(this,'Copied ✓')).catch(()=>flash(this,'Copy failed'));track('copy',{tool:slug})};
- $('#share').onclick=function(){const p=new URLSearchParams();form.querySelectorAll('input[id],select[id],textarea[id]').forEach(e=>{if(e.value&&e.id!=='msearch')p.set(e.id,e.value)});if(BMI&&BMI.u==='us')p.set('u','us');
-  const url=location.href.split('?')[0]+(p.toString()?'?'+p:''),r=txt(),data={title:t.name+' | Toolora',text:r!=='—'?t.name+': '+r:t.name,url};
-  track('share',{tool:slug});(navigator.share?navigator.share(data):copy(url).then(()=>flash(this,'Link copied ✓'))).catch(()=>{})};
+ exportUI(slug,form,t,txt,flash,copy);
  track('tool_view',{tool:slug});
 }
 
+
+
+/*TOOLORA-NEW*/
+const M=(()=>{
+const BI=BigInt,gcdB=(a,b)=>{a=a<0n?-a:a;b=b<0n?-b:b;while(b){[a,b]=[b,a%b]}return a},lcmB=(a,b)=>a/gcdB(a,b)*b;
+class Q{constructor(n,d=1n){n=BI(n);d=BI(d);if(d<0n){n=-n;d=-d}const g=gcdB(n,d)||1n;this.n=n/g;this.d=d/g}
+ add(o){return new Q(this.n*o.d+o.n*this.d,this.d*o.d)}sub(o){return new Q(this.n*o.d-o.n*this.d,this.d*o.d)}
+ mul(o){return new Q(this.n*o.n,this.d*o.d)}div(o){return new Q(this.n*o.d,this.d*o.n)}neg(){return new Q(-this.n,this.d)}
+ z(){return this.n===0n}isInt(){return this.d===1n}isOne(){return this.n===1n&&this.d===1n}val(){return Number(this.n)/Number(this.d)}
+ cmp(o){const x=this.n*o.d-o.n*this.d;return x<0n?-1:x>0n?1:0}abs(){return this.n<0n?this.neg():this}
+ toString(){return this.d===1n?String(this.n):this.n+'/'+this.d}}
+const Q0=new Q(0n),Q1=new Q(1n),QM=new Q(-1n);
+const dq=x=>String(x).replace(/-/g,'−');
+const qIn=s=>{s=String(s).trim().replace(/\u2212/g,'-');let m=s.match(/^([-+]?\d+)\s*\/\s*(\d+)$/);if(m)return BI(m[2])===0n?null:new Q(BI(m[1]),BI(m[2]));
+ if(!/^[-+]?(\d+\.?\d*|\.\d+)$/.test(s))return null;const neg=s[0]==='-';s=s.replace(/^[-+]/,'');const[a,b='']=s.split('.');const q=new Q(BI((a||'0')+b),10n**BI(b.length));return neg?q.neg():q};
+const rnd=(x,p=4)=>{if(!isFinite(x))return String(x);const s=(+x.toFixed(p)).toString();return s==='-0'?'0':s.replace('-','−')};
+// ---- monomials & polynomials (Map key -> Q) ----
+const mono=k=>k?k.split('|').map(p=>[p[0],+p.slice(1)]):[];
+const mkey=m=>m.filter(e=>e[1]>0).sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0).map(e=>e[0]+e[1]).join('|');
+const kmul=(a,b)=>{const m=new Map(mono(a));for(const[v,e]of mono(b))m.set(v,(m.get(v)||0)+e);return mkey([...m])};
+const kdiv=(a,b)=>{const m=new Map(mono(a));for(const[v,e]of mono(b)){const x=(m.get(v)||0)-e;if(x<0)return null;m.set(v,x)}return mkey([...m])};
+const kdeg=k=>mono(k).reduce((s,e)=>s+e[1],0),kexp=(k,v)=>{for(const[x,e]of mono(k))if(x===v)return e;return 0};
+const cmpK=(a,b)=>{const A=Object.fromEntries(mono(a)),B=Object.fromEntries(mono(b));for(const v of[...new Set([...Object.keys(A),...Object.keys(B)])].sort()){const d=(A[v]||0)-(B[v]||0);if(d)return d}return 0};
+const pnum=q=>new Map(q.z()?[]:[['',q]]);
+const pAdd=(a,b,s=1)=>{const r=new Map(a);for(const[k,v]of b){const w=s<0?v.neg():v,o=r.get(k),x=o?o.add(w):w;x.z()?r.delete(k):r.set(k,x)}return r};
+const pMul=(a,b)=>{const r=new Map();for(const[ka,va]of a)for(const[kb,vb]of b){const k=kmul(ka,kb),v=va.mul(vb),o=r.get(k),x=o?o.add(v):v;x.z()?r.delete(k):r.set(k,x)}return r};
+const pScale=(a,q)=>{const r=new Map();if(!q.z())for(const[k,v]of a)r.set(k,v.mul(q));return r};
+const pIsConst=a=>a.size===0||(a.size===1&&a.has('')),pConst=a=>a.get('')||Q0;
+const pVars=a=>{const s=new Set();for(const k of a.keys())for(const[v]of mono(k))s.add(v);return[...s].sort()};
+const pDeg=(a,v)=>{let d=0;for(const k of a.keys())d=Math.max(d,v?kexp(k,v):kdeg(k));return d};
+const pCoef=(a,v,i)=>{const r=new Map();for(const[k,c]of a){let e=0;const rest=[];for(const[x,n]of mono(k)){if(x===v)e=n;else rest.push([x,n])}if(e===i)r.set(mkey(rest),c)}return r};
+const okeys=p=>[...p.keys()].sort((a,b)=>kdeg(b)-kdeg(a)||cmpK(b,a));
+const lead=p=>okeys(p)[0];
+function pDivExact(n,d){if(!d.size)return null;let r=new Map(n),q=new Map();const ld=lead(d),cd=d.get(ld);
+ for(let g=0;g<400&&r.size;g++){const lr=lead(r),m=kdiv(lr,ld);if(m===null)return null;const t=new Map([[m,r.get(lr).div(cd)]]);q=pAdd(q,t);r=pAdd(r,pMul(t,d),-1)}return r.size?null:q}
+function pContent(p){if(!p.size)return{c:Q1,prim:p};let g=0n,l=1n;for(const v of p.values()){g=gcdB(g,v.n);l=lcmB(l,v.d)}const c=new Q(g,l);return{c,prim:pScale(p,Q1.div(c))}}
+function pMonoGcd(...ps){let m=null;for(const p of ps)for(const k of p.keys()){const o=Object.fromEntries(mono(k));if(!m)m=o;else for(const v of Object.keys(m))m[v]=Math.min(m[v],o[v]||0)}return mkey(Object.entries(m||{}))}
+const pDivMono=(p,g)=>{const r=new Map();for(const[k,c]of p)r.set(kdiv(k,g),c);return r};
+const qPow=(q,e)=>{let r=Q1;for(let i=0;i<e;i++)r=r.mul(q);return r};
+function pEval(p,m){let s=Q0;for(const[k,c]of p){let t=c;for(const[v,e]of mono(k)){if(!m[v])return null;t=t.mul(qPow(m[v],e))}s=s.add(t)}return s}
+const tidy=p=>{const{prim}=pContent(p);if(!prim.size)return prim;const k=okeys(prim)[0];return prim.get(k).n<0n?pScale(prim,QM):prim};
+// ---- rational functions ----
+const R=(n,d=pnum(Q1))=>({n,d});
+const rAdd=(a,b,s=1)=>R(pAdd(pMul(a.n,b.d),pMul(b.n,a.d),s),pMul(a.d,b.d));
+const rMul=(a,b)=>R(pMul(a.n,b.n),pMul(a.d,b.d));
+const rDiv=(a,b)=>{if(!b.n.size)throw new Error('Division by zero is not allowed.');return R(pMul(a.n,b.d),pMul(a.d,b.n))};
+const rNeg=a=>R(pScale(a.n,QM),a.d);
+const rPow=(a,e)=>{if(e<0){a=rDiv(R(pnum(Q1)),a);e=-e}let r=R(pnum(Q1));for(let i=0;i<e;i++)r=rMul(r,a);return r};
+function rNorm(r){let{n,d}=r;if(!n.size)return R(n,pnum(Q1));
+ if(!pIsConst(d)){let q=pDivExact(n,d);if(q)return R(q,pnum(Q1))}
+ if(!pIsConst(n)){const q=pDivExact(d,n);if(q)return R(pnum(Q1),q)}
+ const g=pMonoGcd(n,d);if(g){n=pDivMono(n,g);d=pDivMono(d,g)}
+ const cn=pContent(n),cd=pContent(d),k=cn.c.div(cd.c);n=pScale(cn.prim,new Q(k.n));d=pScale(cd.prim,new Q(k.d));
+ if(d.get(lead(d)).n<0n){n=pScale(n,QM);d=pScale(d,QM)}return R(n,d)}
+// ---- printing ----
+const SUP='⁰¹²³⁴⁵⁶⁷⁸⁹',sup=n=>String(n).split('').map(c=>SUP[+c]).join('');
+const mStr=k=>mono(k).map(([v,e])=>v+(e>1?sup(e):'')).join('');
+function pStr(p){if(!p.size)return'0';let ks=okeys(p);if(ks.length>1&&p.get(ks[0]).n<0n){const j=ks.findIndex(k=>p.get(k).n>0n);if(j>0)ks=[ks[j],...ks.filter((_,i)=>i!==j)]}let s='';ks.forEach((k,i)=>{const c=p.get(k),neg=c.n<0n,a=c.abs(),m=mStr(k);
+ const t=!m?String(a):(a.isOne()?'':a.isInt()?String(a.n):'('+a+')')+m;s+=i===0?(neg?'−':'')+t:(neg?' − ':' + ')+t});return s}
+const wrap=p=>p.size>1?'('+pStr(p)+')':pStr(p);
+const isOne=p=>pIsConst(p)&&pConst(p).isOne();
+function rStr(r){r=rNorm(r);return isOne(r.d)?pStr(r.n):wrap(r.n)+' / '+wrap(r.d)}
+const rVars=(...rs)=>[...new Set(rs.flatMap(r=>[...pVars(r.n),...pVars(r.d)]))].filter(v=>v!=='π').sort();
+// ---- parser ----
+const E=m=>new Error(m);
+function parseTokens(T){let i=0;
+ const expr=()=>{let r=term();while(T[i]==='+'||T[i]==='-'){const o=T[i++];r=rAdd(r,term(),o==='-'?-1:1)}return r};
+ const term=()=>{let r=unary();for(;;){const t=T[i];if(t==='*'||t==='/'){i++;const u=unary();r=t==='*'?rMul(r,u):rDiv(r,u)}else if(t&&(t==='('||t==='pi'||/^[a-zA-Z]$/.test(t)))r=rMul(r,power());else break}return r};
+ const unary=()=>{if(T[i]==='-'){i++;return rNeg(unary())}if(T[i]==='+'){i++;return unary()}return power()};
+ const power=()=>{const b=atom();if(T[i]==='^'){i++;let sg=1;if(T[i]==='-'){sg=-1;i++}else if(T[i]==='+')i++;const e=atom();
+  if(!pIsConst(e.n)||!pIsConst(e.d))throw E('Powers must be whole numbers, like x^2.');const q=pConst(e.n).div(pConst(e.d));
+  if(!q.isInt()||Math.abs(Number(q.n))>20)throw E('Powers must be whole numbers up to 20.');return rPow(b,sg*Number(q.n))}return b};
+ const atom=()=>{const t=T[i++];if(t===undefined)throw E('The expression ends too early.');
+  if(t==='(' ){const r=expr();if(T[i++]!==')')throw E('A bracket is not closed.');return r}
+  if(/^(\d+\.?\d*|\.\d+)$/.test(t))return R(pnum(qIn(t)));
+  if(t==='pi')return R(new Map([['π1',Q1]]));if(/^[a-zA-Z]$/.test(t))return R(new Map([[t+'1',Q1]]));
+  throw E('I did not expect "'+t+'" there.')};
+ const r=expr();if(i<T.length)throw E('I did not expect "'+T[i]+'" there.');return r}
+function tokenize(src){const s=String(src).replace(/\*\*/g,'^').replace(/[\u2212\u2013\u2014]/g,'-').replace(/[×·]/g,'*').replace(/÷/g,'/').replace(/²/g,'^2').replace(/³/g,'^3').replace(/π/g,'pi').replace(/\s+/g,'');
+ const T=s.match(/\d+\.?\d*|\.\d+|pi|[a-zA-Z]|[-+*/^()=]|[^]/g)||[];for(const t of T)if(!/^(\d+\.?\d*|\.\d+|pi|[a-zA-Z]|[-+*/^()=])$/.test(t))throw E('I can not read the symbol "'+t+'".');return T}
+const parseR=s=>{const T=tokenize(s);if(T.includes('='))throw E('Use only one expression here.');if(!T.length)throw E('Type something first.');return parseTokens(T)};
+function parseEq(s){const T=tokenize(s),k=T.indexOf('=');if(k<0||T.indexOf('=',k+1)>=0)throw E('An equation needs exactly one = sign.');if(!k||k===T.length-1)throw E('Both sides of = need something.');return{l:parseTokens(T.slice(0,k)),r:parseTokens(T.slice(k+1))}}
+// ---- factorising ----
+function ratRoot(c){ // c: ascending Q coefficients (deg>=1), returns Q root or null
+ let L=1n;for(const x of c)L=lcmB(L,x.d);const a=c.map(x=>x.n*(L/x.d));if(a[0]===0n)return Q0;
+ const p0=a[0]<0n?-a[0]:a[0],pn=a[a.length-1]<0n?-a[a.length-1]:a[a.length-1];if(p0>10n**12n||pn>10n**12n)return null;
+ const divs=n=>{const r=[],N=Number(n);for(let i=1;i*i<=N;i++)if(N%i===0){r.push(BI(i));if(i*i!==N)r.push(BI(N/i))}return r};
+ for(const q of divs(pn))for(const p of divs(p0))for(const s of[1n,-1n]){const x=new Q(s*p,q);let v=Q0;for(let i=c.length-1;i>=0;i--)v=v.mul(x).add(c[i]);if(v.z())return x}return null}
+const uniCoefs=(P,v)=>{const d=pDeg(P,v),c=[];for(let i=0;i<=d;i++)c.push(pConst(pCoef(P,v,i)));return c};
+function factorP(P){if(!P.size)return'0';const k0=lead(P),sg=P.get(k0).n<0n?QM:Q1;let{c,prim}=pContent(P);c=c.mul(sg);prim=pScale(prim,sg);
+ const g=pMonoGcd(prim);if(g)prim=pDivMono(prim,g);const fs=[],vs=pVars(prim);
+ if(vs.length===1){const v=vs[0];for(let t=0;t<30&&pDeg(prim,v)>=2;t++){const x=ratRoot(uniCoefs(prim,v));if(x===null)break;
+  const f=new Map([[v+'1',new Q(x.d)],...(x.z()?[]:[['',x.n<0n?new Q(-x.n):new Q(-x.n)]])]);if(!x.z())f.set('',new Q(-x.n));
+  const qt=pDivExact(prim,f);if(!qt)break;prim=qt;const pc=pContent(prim);c=c.mul(pc.c);prim=pc.prim;fs.push(pStr(f))}}
+ const cnt={};fs.forEach(f=>cnt[f]=(cnt[f]||0)+1);
+ let s=c.isOne()?'':c.n===-1n&&c.isInt()?'−':c.isInt()?String(c.n).replace('-','−'):'('+dq(c)+')';s+=mStr(g);
+ for(const f of Object.keys(cnt))s+='('+f+')'+(cnt[f]>1?sup(cnt[f]):'');
+ if(!isOne(R(prim)))s+=(prim.size>1&&(s||g)?'('+pStr(prim)+')':pStr(prim));else if(!s)s='1';return s}
+const factorR=r=>{r=rNorm(r);return isOne(r.d)?factorP(r.n):'('+factorP(r.n)+') / ('+factorP(r.d)+')'};
+// ---- quadratics (numeric, exact) ----
+function sqrtSimp(m){if(m===0n)return[0n,1n];if(m<2n**52n){const t=BI(Math.round(Math.sqrt(Number(m))));if(t*t===m)return[t,1n]}let s=1n,r=m;for(let p=2n;p*p<=r&&p<100000n;p++)while(r%(p*p)===0n){r/=p*p;s*=p}return[s,r]}
+function pmStr(u,w,r,im){const rad=r===1n?'':'√'+r,core=(im?'i':'')+rad,L=lcmB(u.d,w.d),pn=u.n*(L/u.d),wn=w.n*(L/w.d);
+ const t=(wn===1n&&core?'':String(wn))+core,num=pn===0n?'±'+t:String(pn).replace('-','−')+' ± '+t;return L===1n?num:(pn===0n?num+' / '+L:'('+num+') / '+L)}
+function quadNum(a,b,c){const D=b.mul(b).sub(new Q(4n).mul(a).mul(c)),two=a.mul(new Q(2n)),u=b.neg().div(two),out={D,roots:[],kind:'',main:'',approx:''};
+ if(D.z()){out.kind='double';out.roots=[{rhs:dq(u),re:u.val(),im:0}];out.main=dq(u);out.approx=u.isInt()?'':rnd(u.val());return out}
+ const neg=D.n<0n,[s,r]=sqrtSimp((neg?-D.n:D.n)*D.d),w=new Q(s,D.d).div(two).abs();
+ if(!neg&&r===1n){const x1=u.add(w),x2=u.sub(w);out.kind='rational';out.roots=[x2,x1].sort((p,q)=>p.cmp(q)).map(x=>({rhs:dq(x),re:x.val(),im:0}));out.main=out.roots.map(x=>x.rhs).join(' or ')}
+ else{const rt=Math.sqrt(Number(r)),wf=w.val()*rt;out.kind=neg?'complex':'surd';
+  out.main=pmStr(u,w,r,neg);const rhs=out.main;out.roots=[{rhs:rhs.replace('±','+'),re:u.val(),im:neg?wf:0,v:neg?0:u.val()+wf,pm:true},{rhs:rhs.replace('±','−'),re:u.val(),im:neg?-wf:0,v:neg?0:u.val()-wf}];
+  out.approx=neg?rnd(u.val())+' ± '+rnd(wf)+'i':rnd(u.val()+wf)+' or '+rnd(u.val()-wf)}return out}
+function durand(c){const n=c.length-1,a=c.map(x=>x/c[n]);let z=[];for(let k=0;k<n;k++){const ang=2*Math.PI*k/n+.4,r=1+Math.max(...a.slice(0,n).map(Math.abs));z.push([r*Math.cos(ang),r*Math.sin(ang)])}
+ const mul=(p,q)=>[p[0]*q[0]-p[1]*q[1],p[0]*q[1]+p[1]*q[0]],sub=(p,q)=>[p[0]-q[0],p[1]-q[1]],div=(p,q)=>{const d=q[0]*q[0]+q[1]*q[1];return[(p[0]*q[0]+p[1]*q[1])/d,(p[1]*q[0]-p[0]*q[1])/d]};
+ for(let it=0;it<500;it++){z=z.map((zi,i)=>{let f=[1,0];for(let j=n-1;j>=0;j--)f=mul(f,zi),f[0]+=a[j];let den=[1,0];z.forEach((zj,j)=>{if(j!==i)den=mul(den,sub(zi,zj))});return sub(zi,div(f,den))})}return z}
+// ---- equation solving ----
+function solveFor(l,r,v){const P0=pAdd(pMul(l.n,r.d),pMul(r.n,l.d),-1),steps=[],res={P:P0,v,steps,sols:[],main:'',approx:'',check:[],kind:''};
+ const nl=rNorm(l),nr=rNorm(r);steps.push(`Start with: ${rStr(nl)} = ${rStr(nr)}`);
+ if(!isOne(nl.d)||!isOne(nr.d))steps.push('Multiply both sides to clear the fractions.');
+ if(!P0.size){res.main='Every value works (both sides are always equal).';res.kind='all';return res}
+ if(pDeg(P0,v)===0){res.main=pIsConst(P0)?'No solution (the two sides can never be equal).':`This equation does not contain ${v}.`;res.kind='none';return res}
+ const P=tidy(P0),deg=pDeg(P,v);steps.push(`Bring everything to one side: ${pStr(P)} = 0`);
+ const cs=A=>pIsConst(A)?(q=>q.isOne()?'':q.n===-1n&&q.isInt()?'−':q.isInt()?dq(q.n):'('+dq(q)+')')(pConst(A)):wrap(A);
+ const sg=B=>{if(!B.size)return'';const s=pStr(B);return B.size===1?(s[0]==='−'?' − '+s.slice(1):' + '+s):' + ('+s+')'};
+ const num1=pVars(P).length===1;
+ if(deg===1){const A=pCoef(P,v,1),B=pCoef(P,v,0);steps.push(`Collect the ${v} terms: ${cs(A)}${v}${sg(B)} = 0`);steps.push(`Move the other terms across: ${cs(A)}${v} = ${pStr(pScale(B,QM))}`);
+  const sol=rNorm(R(pScale(B,QM),A)),rhs=rStr(sol);if(!isOne(R(A)))steps.push(`Divide both sides by ${pIsConst(A)?dq(pConst(A)):wrap(A)}: ${v} = ${rhs}`);
+  res.kind='linear';let val=null;if(num1&&pIsConst(sol.n)&&isOne(sol.d)){val=pConst(sol.n);res.approx=val.isInt()?'':rnd(val.val());res.sols.push({rhs,re:val.val(),im:0,q:val});
+   const a=pEval(l.n,{[v]:val}),b=pEval(l.d,{[v]:val}),c=pEval(r.n,{[v]:val}),d=pEval(r.d,{[v]:val});if(a&&c&&b&&d&&!b.z()&&!d.z()){const L=a.div(b),Rr=c.div(d);if(L.cmp(Rr)===0)res.check.push(`Check: left side = ${dq(L)} and right side = ${dq(Rr)} ✓`)}}
+  else res.sols.push({rhs});res.main=`${v} = ${rhs}`;return res}
+ if(deg===2){const A=pCoef(P,v,2),B=pCoef(P,v,1),C=pCoef(P,v,0);
+  if(pIsConst(A)&&pIsConst(B)&&pIsConst(C)&&num1){const a=pConst(A),b=pConst(B),c=pConst(C),qn=quadNum(a,b,c);
+   steps.push(`This is a quadratic in ${v}: a = ${dq(a)}, b = ${dq(b)}, c = ${dq(c)}`);steps.push(`Discriminant: b² − 4ac = ${dq(b.mul(b))} − 4(${dq(a)})(${dq(c)}) = ${dq(qn.D)}`);
+   steps.push(qn.D.z()?`The discriminant is 0, so there is one repeated root: ${v} = −b / 2a`:qn.D.n>0n?`The discriminant is positive, so there are two real roots: ${v} = (−b ± √D) / 2a`:`The discriminant is negative, so there are no real roots, only complex ones: ${v} = (−b ± √D) / 2a`);
+   res.kind=qn.kind;res.sols=qn.roots;res.approx=qn.approx;
+   res.main=qn.kind==='rational'?qn.roots.map(x=>`${v} = ${x.rhs}`).join(' or '):qn.kind==='double'?`${v} = ${qn.main} (repeated root)`:`${v} = ${qn.main}`;
+   if(qn.kind==='complex')res.main+='  (no real solutions)';
+   if(qn.kind==='rational'||qn.kind==='double'){for(const x of qn.roots){const q=qIn(x.rhs);if(q){const a2=pEval(l.n,{[v]:q}),b2=pEval(l.d,{[v]:q}),c2=pEval(r.n,{[v]:q}),d2=pEval(r.d,{[v]:q});if(a2&&c2&&b2&&d2&&!b2.z()&&!d2.z()&&a2.div(b2).cmp(c2.div(d2))===0)res.check.push(`Check ${v} = ${x.rhs}: left side = right side = ${dq(a2.div(b2))} ✓`)}}}
+   else if(qn.kind==='surd')steps.push('The root is not a whole number or fraction, so it is left as an exact surd (a decimal is shown too).');
+   return res}
+  if(!pIsConst(A)||true){res.kind='symbolic';steps.push(`This is a quadratic in ${v}: a = ${pStr(A)}, b = ${pStr(B)||'0'}, c = ${pStr(C)}`);
+   let rhs;if(!B.size){rhs='±√('+rStr(R(pScale(C,QM),A))+')';steps.push(`There is no ${v} term, so ${v}² = ${rStr(R(pScale(C,QM),A))}`);steps.push(`Take the square root of both sides: ${v} = ${rhs}`)}
+   else{const D=pAdd(pMul(B,B),pScale(pMul(A,C),new Q(4n)),-1),A2=pScale(A,new Q(2n));rhs='('+pStr(pScale(B,QM))+' ± √('+pStr(D)+')) / '+wrap(A2);steps.push(`Use the quadratic formula: ${v} = (−b ± √(b² − 4ac)) / 2a`);steps.push(`Substitute: ${v} = ${rhs}`)}
+   res.sols=[{rhs:rhs.replace('±','+')},{rhs:rhs.replace('±','−')}];res.main=`${v} = ${rhs}`;return res}}
+ if(num1){const c=uniCoefs(P,v);steps.push(`This is a degree-${deg} equation. Look for whole-number or fraction roots using the rational root test.`);
+  let cur=c.slice();const roots=[];let tries=0;while(cur.length>3&&tries++<20){const x=ratRoot(cur);if(x===null)break;roots.push(x);
+   const n=cur.length-1,q=new Array(n);let carry=Q0;for(let i=n;i>=1;i--){carry=cur[i].add(carry.mul(x));q[i-1]=carry}cur=q;steps.push(`${v} = ${dq(x)} is a root, so (${pStr(new Map([[v+'1',Q1],...(x.z()?[]:[['',x.neg()]])]))}) is a factor.`)}
+  let items=roots.map(x=>({rhs:dq(x),re:x.val(),im:0,q:x}));
+  if(cur.length===3){const qn=quadNum(cur[2],cur[1],cur[0]);steps.push(`The remaining quadratic gives: ${qn.main}`);items=items.concat(qn.roots.filter(x=>!x.pm||true))}
+  else if(cur.length===2){const x=cur[0].neg().div(cur[1]);items.push({rhs:dq(x),re:x.val(),im:0,q:x})}
+  else if(cur.length>3){const z=durand(cur.map(x=>x.val()));steps.push('The remaining roots are not simple fractions, so they are found numerically.');z.forEach(p=>{if(Math.abs(p[1])<1e-7)items.push({rhs:rnd(p[0],6),re:p[0],im:0,approxOnly:true})})}
+  res.kind='poly';res.sols=items;res.main=items.map(x=>`${v} = ${x.rhs}`).join(' or ');res.approx=items.some(x=>x.approxOnly)?'approximate real roots':'';if(!items.length)res.main='No real solutions.';return res}
+ throw E('I can solve equations up to degree 2 with several letters, and higher degrees with one letter.')}
+// ---- linear systems ----
+function solveSys(lines){const eqs=lines.map(s=>{const{l,r}=parseEq(s);return pAdd(pMul(l.n,r.d),pMul(r.n,l.d),-1)});
+ const vars=[...new Set(eqs.flatMap(pVars))].sort();if(vars.includes('π'))throw E('π is not supported in systems yet.');
+ for(const p of eqs)for(const k of p.keys())if(kdeg(k)>1)throw E('Only straight-line (linear) equations are supported here: no x², xy or similar.');
+ if(!vars.length)throw E('Add some letters, like x and y.');
+ const rows=eqs.map(p=>[...vars.map(v=>p.get(v+'1')||Q0),(p.get('')||Q0).neg()]),m=rows.length,n=vars.length,steps=[];
+ const rs=r=>{const p=new Map();vars.forEach((v,j)=>{if(!r[j].z())p.set(v+'1',r[j])});return(p.size?pStr(p):'0')+' = '+dq(r[n])};
+ steps.push('Write the equations:');rows.forEach((r,i)=>steps.push(`R${i+1}:  ${rs(r)}`));steps.push('Now eliminate one letter at a time (Gauss–Jordan elimination).');
+ let pr=0;const piv=[];
+ for(let c=0;c<n&&pr<m;c++){let k=pr;while(k<m&&rows[k][c].z())k++;if(k===m)continue;
+  if(k!==pr){[rows[k],rows[pr]]=[rows[pr],rows[k]];steps.push(`Swap R${pr+1} and R${k+1}.`)}
+  const pv=rows[pr][c];if(!pv.isOne()){rows[pr]=rows[pr].map(x=>x.div(pv));steps.push(`R${pr+1} ← R${pr+1} ÷ ${dq(pv)}:  ${rs(rows[pr])}`)}
+  for(let i=0;i<m;i++)if(i!==pr&&!rows[i][c].z()){const f=rows[i][c];rows[i]=rows[i].map((x,j)=>x.sub(f.mul(rows[pr][j])));steps.push(`R${i+1} ← R${i+1} − (${dq(f)})×R${pr+1}:  ${rs(rows[i])}`)}
+  piv.push(c);pr++}
+ const out={vars,steps,sol:{},type:'',main:'',approx:'',eqs};
+ for(let i=pr;i<m;i++)if(!rows[i][n].z()){out.type='none';out.main='No solution: the equations contradict each other.';return out}
+ const free=vars.filter((_,j)=>!piv.includes(j));
+ if(free.length){out.type='many';out.main=piv.map((c,i)=>{const p=new Map();if(!rows[i][n].z())p.set('',rows[i][n]);free.forEach(f=>{const a=rows[i][vars.indexOf(f)];if(!a.z())p.set(f+'1',a.neg())});return`${vars[c]} = ${pStr(p)}`}).join(',  ')+`  (${free.join(', ')} can be any number)`;return out}
+ out.type='one';piv.forEach((c,i)=>out.sol[vars[c]]=rows[i][n]);out.main=vars.map(v=>`${v} = ${dq(out.sol[v])}`).join(',  ');
+ const ap=vars.filter(v=>!out.sol[v].isInt()).map(v=>`${v} ≈ ${rnd(out.sol[v].val())}`);out.approx=ap.join(',  ');out.rows=eqs;return out}
+// ---- evaluate ----
+function evalR(r,m){const a=pEval(r.n,m),b=pEval(r.d,m);if(a===null||b===null)return null;if(b.z())return'undefined';return a.div(b)}
+return{Q,qIn,dq,rnd,parseR,parseEq,rNorm,rStr,pStr,solveFor,solveSys,factorR,factorP,quadNum,rVars,evalR,pEval,pVars,pDeg,pCoef,uniCoefs,tidy,pAdd,pMul,pScale,R,pnum,isOne,pIsConst,pConst,Q0,Q1,QM,mono}})();
+if(typeof module!=='undefined')module.exports=M;
+
+const TX=(()=>{
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const friendly=e=>e&&e.constructor===Error?e.message:"I couldn't work that out. Check your brackets and symbols, for example 5x + 3y = 6 or (x+1)(x−2).";
+const KP=['x','y','z','^','(',')','+','−','×','÷','=','π','⌫'];
+const kp=()=>'<div class="kp" role="group" aria-label="Math keys">'+KP.map(k=>'<button type="button" data-k="'+k+'">'+k+'</button>').join('')+'</div>';
+const exs=a=>'<div class="exs"><span>Try:</span>'+a.map(e=>'<button type="button" class="chip" data-ex="'+e+'">'+e.replace(/;/g,'  ;  ')+'</button>').join('')+'</div>';
+const textInit=()=>{const f=$('#tool-form');
+ f.addEventListener('pointerdown',e=>{if(e.target.closest('.kp button,.exs button'))e.preventDefault()});
+ f.addEventListener('click',e=>{const b=e.target.closest('[data-k],[data-ex]');if(!b)return;const q=$('#q');
+  if(b.dataset.ex!==undefined)q.value=b.dataset.ex.replace(/;/g,'\n');
+  else{const k=b.dataset.k,s=q.selectionStart??q.value.length,t=q.selectionEnd??s;if(k==='⌫'){if(s!==t)q.setRangeText('',s,t,'end');else if(s>0)q.setRangeText('',s-1,s,'end')}else q.setRangeText(k,s,t,'end')}
+  q.dispatchEvent(new Event('input',{bubbles:true}));q.focus()})};
+const stepsHTML=(st,ck)=>'<div class="steps"><h3>Step-by-step working</h3><ol>'+st.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ol>'+(ck||[]).map(c=>'<p class="ok">'+esc(c)+'</p>').join('')+'</div>';
+const sub=t=>t?'<span class="sub">'+esc(t)+'</span>':'';
+const fail=m=>{setResult('—');$('#work').innerHTML='<div class="err">'+esc(m)+'</div>'};
+const clear=()=>{setResult('—');$('#work').innerHTML=''};
+// ---------- graph ----------
+function plot(cv,curves,pts,o){o=o||{};const dpr=Math.min(window.devicePixelRatio||1,2),W=Math.max((cv.parentNode.clientWidth||320)-2,260),H=Math.round(W*.62);
+ cv.hidden=false;cv.style.height=H+'px';cv.width=W*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
+ const cs=getComputedStyle(document.documentElement),C=n=>cs.getPropertyValue(n).trim();let x0=o.x0===undefined?-6:o.x0,x1=o.x1===undefined?6:o.x1,lo=Infinity,hi=-Infinity;const N=240;
+ curves.forEach(c=>{if(c.f)for(let i=0;i<=N;i++){const y=c.f(x0+(x1-x0)*i/N);if(isFinite(y)&&Math.abs(y)<1e7){lo=Math.min(lo,y);hi=Math.max(hi,y)}}});
+ pts.forEach(p=>{lo=Math.min(lo,p.y);hi=Math.max(hi,p.y)});if(!isFinite(lo)){lo=-1;hi=1}lo=Math.min(lo,0);hi=Math.max(hi,0);if(hi-lo<1e-9){lo-=1;hi+=1}const pad=(hi-lo)*.12;lo-=pad;hi+=pad;
+ const L=38,Rr=10,T=10,B=22,px=x=>L+(x-x0)/(x1-x0)*(W-L-Rr),py=y=>T+(hi-y)/(hi-lo)*(H-T-B);
+ const step=(a,b)=>{const raw=(b-a)/5,p=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/p;return(m<1.5?1:m<3.5?2:m<7.5?5:10)*p};
+ const sx=step(x0,x1),sy=step(lo,hi);g.font='11px system-ui,sans-serif';g.lineWidth=1;g.strokeStyle=C('--line')||'#ddd';g.fillStyle=C('--muted')||'#888';
+ for(let x=Math.ceil(x0/sx)*sx;x<=x1+1e-9;x+=sx){g.beginPath();g.moveTo(px(x),T);g.lineTo(px(x),H-B);g.stroke();g.textAlign='center';g.fillText(+x.toFixed(6)+'',px(x),H-8)}
+ for(let y=Math.ceil(lo/sy)*sy;y<=hi+1e-9;y+=sy){g.beginPath();g.moveTo(L,py(y));g.lineTo(W-Rr,py(y));g.stroke();g.textAlign='right';g.fillText(+y.toFixed(6)+'',L-4,py(y)+4)}
+ g.strokeStyle=C('--text')||'#000';g.lineWidth=1.4;if(x0<=0&&x1>=0){g.beginPath();g.moveTo(px(0),T);g.lineTo(px(0),H-B);g.stroke()}if(lo<=0&&hi>=0){g.beginPath();g.moveTo(L,py(0));g.lineTo(W-Rr,py(0));g.stroke()}
+ const cols=['#2563eb','#f59e0b','#10b981'];
+ curves.forEach((c,k)=>{g.strokeStyle=cols[k%3];g.lineWidth=2.2;g.beginPath();if(c.vx!==undefined){g.moveTo(px(c.vx),T);g.lineTo(px(c.vx),H-B)}else{let on=false;for(let i=0;i<=N;i++){const x=x0+(x1-x0)*i/N,y=c.f(x);if(!isFinite(y)||y<lo-5*(hi-lo)||y>hi+5*(hi-lo)){on=false;continue}on?g.lineTo(px(x),py(y)):g.moveTo(px(x),py(y));on=true}}g.stroke()});
+ pts.forEach(p=>{g.fillStyle='#ef4444';g.beginPath();g.arc(px(p.x),py(p.y),4,0,7);g.fill();if(p.t){const r=px(p.x)>W-90;g.fillStyle=C('--text')||'#000';g.textAlign=r?'right':'left';g.fillText(p.t,px(p.x)+(r?-7:7),py(p.y)+(p.below?17:-7))}})}
+const domain=xs=>{xs=xs.filter(isFinite);if(!xs.length)return{x0:-6,x1:6};const a=Math.min(...xs),b=Math.max(...xs),p=Math.max(2,(b-a)*.5);return{x0:a-p,x1:b+p}};
+function drawPoly(P,roots,vertex){const cv=$('#plot');if(!cv)return;const vs=M.pVars(P).filter(x=>x!=='π');
+ if(vs.length===1&&M.pDeg(P,vs[0])>=1&&M.pDeg(P,vs[0])<=6){const c=M.uniCoefs(P,vs[0]).map(q=>q.val()),f=x=>c.reduceRight((a,b)=>a*x+b,0);
+  const rx=roots.filter(r=>r.im===0).map(r=>r.v!==undefined?r.v:r.re),xs=rx.slice();if(vertex)xs.push(vertex.x);
+  plot(cv,[{f}],rx.map(x=>({x,y:0,below:true,t:'('+M.rnd(x,3)+', 0)'})).concat(vertex?[{x:vertex.x,y:vertex.y,t:'vertex ('+M.rnd(vertex.x,3)+', '+M.rnd(vertex.y,3)+')'}]:[]),domain(xs))}
+ else if(vs.length===2&&M.pDeg(P,vs[0])<=1&&M.pDeg(P,vs[1])<=1&&!P.has(vs[0]+'1|'+vs[1]+'1')){plot(cv,[lineOf(P,vs)],[],{x0:-10,x1:10})}}
+const lineOf=(P,vs)=>{const a=(P.get(vs[0]+'1')||M.Q0).val(),b=(P.get(vs[1]+'1')||M.Q0).val(),c=(P.get('')||M.Q0).val();return b!==0?{f:x=>-(a*x+c)/b}:{vx:-c/a}};
+// ---------- algebra / linear / change of subject ----------
+function algRun(mode){const q=$('#q').value.trim(),w=$('#work'),o=$('#opts');
+ if(!q){clear();o.innerHTML='';o.dataset.k='';return}
+ try{
+  if(q.includes('=')){const{l,r}=M.parseEq(q),vs=M.rVars(l,r),key='S'+vs.join('');
+   if(o.dataset.k!==key){o.dataset.k=key;o.innerHTML=vs.length?'<div class="field"><label for="v">'+(mode==='cos'?'Make this letter the subject':'Solve for')+'</label><select id="v">'+vs.map(x=>'<option'+(x===(vs.includes('x')?'x':vs[0])?' selected':'')+'>'+x+'</option>').join('')+'</select></div>':''}
+   const sel=$('#v'),v=sel?sel.value:null;
+   if(!v){const a=M.evalR(l,{}),b=M.evalR(r,{});setResult(a&&b&&a.cmp&&b.cmp&&a.cmp(b)===0?'True ✓':'False ✗');w.innerHTML='';return}
+   const S=M.solveFor(l,r,v);setResult(esc(S.main)+sub(S.approx&&(S.approx==='approximate real roots'?'Approximate decimal values':v+' ≈ '+S.approx)));
+   w.innerHTML=stepsHTML(S.steps,S.check)+'<canvas id="plot" hidden></canvas>';if(mode!=='cos')drawPoly(S.P,S.sols,null)}
+  else{if(mode==='cos'){fail('Type a formula with an equals sign, for example v = u + at.');o.innerHTML='';o.dataset.k='';return}
+   const r=M.parseR(q),vs=M.rVars(r),key='E'+vs.join('');
+   if(o.dataset.k!==key){o.dataset.k=key;o.innerHTML=vs.length?'<div class="field"><label>Evaluate (optional): give each letter a value</label><div class="evals">'+vs.map(x=>'<label class="ev">'+x+' = <input id="e_'+x+'" inputmode="decimal" placeholder="?"></label>').join('')+'</div></div>':''}
+   const ex=M.rStr(r),fc=M.factorR(r),map={};let all=vs.length>0;vs.forEach(x=>{const e=$('#e_'+x),qv=e&&M.qIn(e.value);if(qv)map[x]=qv;else all=false});
+   const val=!vs.length?M.evalR(r,{}):all?M.evalR(r,map):null,vt=val===null?'':val==='undefined'?'undefined (division by zero)':M.dq(val)+(val.isInt()?'':'  ≈ '+M.rnd(val.val()));
+   setResult(esc(vs.length?ex:vt));let h='<div class="ln"><b>Expanded and simplified:</b> '+esc(ex)+'</div>'+(fc!==ex?'<div class="ln"><b>Factorised:</b> '+esc(fc)+'</div>':'<div class="ln muted">Nothing more to factorise.</div>');
+   if(vs.length&&val!==null)h+='<div class="ln"><b>Value:</b> '+esc(vt)+'</div>';
+   w.innerHTML=h+'<div class="hint" style="margin-top:8px">Add an equals sign to solve it, for example '+esc(ex)+' = 0</div><canvas id="plot" hidden></canvas>';
+   if(vs.length===1&&M.isOne(M.rNorm(r).d)){try{const S=M.solveFor(r,M.R(M.pnum(M.Q0)),vs[0]);drawPoly(M.rNorm(r).n,S.sols,null)}catch(e){drawPoly(M.rNorm(r).n,[],null)}}}
+ }catch(e){fail(friendly(e))}}
+const algUI=(ph,ex,lbl,hint)=>'<div class="field"><label for="q">'+lbl+'</label><input id="q" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="'+ph+'">'+kp()+exs(ex)+'<div class="hint">'+hint+'</div></div><div id="opts"></div>';
+const H1='Write powers as x^2 or x². Use brackets and fractions like 1/2. Letters next to each other multiply (5xy).';
+// ---------- quadratic ----------
+const fld=(id,l)=>'<div class="field"><label for="'+id+'">'+l+'</label><input id="'+id+'" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>';
+function quadRun(){const v=['a','b','c'].map(k=>$('#'+k).value.trim());if(v.every(x=>!x)){clear();$('#eqp').textContent='ax² + bx + c = 0';return}
+ const q=v.map(M.qIn);if(q.some(x=>x===null)){if(v.every(Boolean)||v.some(x=>x&&!M.qIn(x)))return fail('Enter numbers like 2, −3, 0.5 or 1/2 in each box.');return clear()}
+ if(q[0].z())return fail('a cannot be 0, because then it is not a quadratic. Try the Linear Equation Calculator.');
+ const[a,b,c]=q,P=new Map([['x2',a],...(b.z()?[]:[['x1',b]]),...(c.z()?[]:[['',c]])]);$('#eqp').textContent=M.pStr(P)+' = 0';
+ try{const S=M.solveFor(M.R(P),M.R(M.pnum(M.Q0)),'x'),two=a.mul(new M.Q(2n)),h=b.neg().div(two),k=c.sub(b.mul(b).div(new M.Q(4n).mul(a)));
+  setResult(esc(S.main)+sub(S.approx&&'x ≈ '+S.approx));
+  const sgn=(h.n>0n?'− ':'+ ')+M.dq(h.abs()),vf=(a.isOne()?'':a.n===-1n&&a.isInt()?'−':M.dq(a.isInt()?a:'('+a+')'))+'(x '+(h.z()?'':sgn)+')²'+(k.z()?'':(k.n<0n?' − ':' + ')+M.dq(k.abs()));
+  const info=[['Discriminant (b² − 4ac)',M.dq(b.mul(b).sub(new M.Q(4n).mul(a).mul(c)))],['Vertex','('+M.dq(h)+', '+M.dq(k)+')'],['Axis of symmetry','x = '+M.dq(h)],['y-intercept','(0, '+M.dq(c)+')'],['Vertex form','y = '+vf],['Factorised',M.factorP(P)+' = 0']];
+  $('#work').innerHTML=stepsHTML(S.steps,S.check)+'<div class="steps"><h3>More about this parabola</h3>'+info.map(i=>'<div class="ln"><b>'+i[0]+':</b> '+esc(i[1])+'</div>').join('')+'</div><canvas id="plot" hidden></canvas>';
+  drawPoly(P,S.sols,{x:h.val(),y:k.val()})}catch(e){fail(friendly(e))}}
+// ---------- simultaneous ----------
+function sysRun(){const lines=$('#q').value.split('\n').map(s=>s.trim()).filter(Boolean);if(!lines.length)return clear();
+ if(lines.length<2)return fail('Add at least two equations, one per line. Example: 2x + 3y = 12 on the first line and x − y = 1 on the second.');
+ try{const S=M.solveSys(lines);setResult(esc(S.main)+sub(S.approx));$('#work').innerHTML=stepsHTML(S.steps,S.type==='one'?['Check: put these values back into each original equation and both sides match ✓']:[])+'<canvas id="plot" hidden></canvas>';
+  if(S.vars.length===2&&S.eqs.length<=3){const cu=S.eqs.map(p=>lineOf(p,S.vars)),pt=S.type==='one'?[{x:S.sol[S.vars[0]].val(),y:S.sol[S.vars[1]].val(),t:'('+M.rnd(S.sol[S.vars[0]].val(),3)+', '+M.rnd(S.sol[S.vars[1]].val(),3)+')'}]:[];
+   const d=pt.length?{x0:pt[0].x-6,x1:pt[0].x+6}:{x0:-8,x1:8};plot($('#plot'),cu,pt,d)}}catch(e){fail(friendly(e))}}
+const SOLVERS={
+ 'algebra-solver':{ui:algUI('e.g. 5x + 3y − 6 = 0',['5x+3y-6=0','(x+2)(x-3)','x^2-5x+6=0','2x^3-3x^2-11x+6=0'],'Type an expression or an equation',H1),init:textInit,run:()=>algRun('alg')},
+ 'linear-equation-calculator':{ui:algUI('e.g. 3x + 5 = 20',['3x+5=20','2(x-4)=x+7','x/3+2=5','0.5x=3'],'Type your equation',H1),init:textInit,run:()=>algRun('alg')},
+ 'change-of-subject-calculator':{ui:algUI('e.g. v = u + at',['v=u+at','s=ut+1/2at^2','E=1/2mv^2','A=πr^2','1/f=1/u+1/v','y=mx+c'],'Type your formula',H1+' Then choose which letter should be the subject.'),init:textInit,run:()=>algRun('cos')},
+ 'quadratic-equation-calculator':{ui:'<div class="eqp" id="eqp">ax² + bx + c = 0</div><div class="three">'+fld('a','a (x² number)')+fld('b','b (x number)')+fld('c','c (number)')+'</div><div class="hint">Type numbers, decimals or fractions like 1/2. Leave a box empty for 0 only if it is b or c.</div>',run:quadRun},
+ 'simultaneous-equations-calculator':{ui:'<div class="field"><label for="q">Type your equations, one per line</label><textarea id="q" rows="3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="2x + 3y = 12\nx − y = 1"></textarea>'+kp()+exs(['2x+3y=12;x-y=1','x+y+z=6;2x-y+z=3;x+2y-z=2','x+y=2;2x+2y=4'])+'<div class="hint">Works with 2, 3 or more letters. Equations must be straight-line (linear).</div></div>',init:textInit,run:sysRun}};
+// ---------- sharing as image / PDF ----------
+const IC={copy:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>',share:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg>'};
+const RICONS='<div class="ricons"><button type="button" class="ib" id="copy" aria-label="Copy result" title="Copy result">'+IC.copy+'</button><button type="button" class="ib" id="share" aria-label="Share result" title="Share result">'+IC.share+'</button><div class="pop" id="pop" hidden><button type="button" data-a="img">🖼️  Share as image</button><button type="button" data-a="pdf">📄  Share as PDF</button><button type="button" data-a="link">🔗  Copy link</button><button type="button" data-a="txt">📝  Copy text</button></div></div>';
+function toast(m){if(!m)return;let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t)}t.textContent=m;t.className='on';clearTimeout(t._h);t._h=setTimeout(()=>t.className='',2200)}
+function snap(t,form){const inputs=[];form.querySelectorAll('.field').forEach(f=>{const l=f.querySelector('label'),e=f.querySelector('input:not([id^=e_]),select,textarea');if(l&&e&&e.value&&!f.querySelector('.evals'))inputs.push([l.textContent.trim(),e.tagName==='SELECT'?e.selectedOptions[0].textContent:e.value.trim().replace(/\n/g,'  ;  ')])});
+ form.querySelectorAll('#rows .row').forEach(r=>{const v=[...r.querySelectorAll('input,select')].map(e=>e.value).filter(Boolean);if(v.length>=2)inputs.push(['Row',v.join(' · ')])});
+ return{title:t.name,inputs,res:$('#result strong').innerText.split('\n').map(s=>s.trim()).filter(Boolean),steps:[...document.querySelectorAll('#work .steps li,#work .ln')].map(e=>e.innerText.trim())}}
+function drawImg(s,cb){const W=1080,P=64,HD=130,c=document.createElement('canvas'),g=c.getContext('2d'),FF='-apple-system,"Segoe UI",Roboto,Arial,sans-serif',dt=new Date().toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});
+ const wr=(txt,px,wt,max)=>{g.font=wt+' '+px+'px '+FF;const out=[];String(txt).split('\n').forEach(par=>{let l='';par.split(' ').forEach(w=>{const t=l?l+' '+w:w;if(g.measureText(t).width>max&&l){out.push(l);l=w}else l=t});out.push(l)});return out};
+ const it=[],tx=(t,px,wt,col,gap,max)=>it.push({k:'t',ls:wr(t,px,wt,max||W-2*P),px,wt,col,gap:gap||0});
+ tx(s.title,50,'800','#0b1b3a',16);s.inputs.slice(0,8).forEach(i=>tx(i[0]+': '+i[1],30,'500','#4b5b7a',4));it.push({k:'sp',h:18},{k:'b0'});
+ s.res.forEach((l,i)=>tx(l,i?30:i===0&&l.length>28?44:62,i?'500':'800',i?'#4b5b7a':'#0b1b3a',10,W-2*P-56));it.push({k:'b1'});
+ if(s.steps.length){it.push({k:'sp',h:26});tx('Working',34,'800','#0b1b3a',8);s.steps.slice(0,18).forEach(l=>tx(l,27,'500','#33415c',6))}
+ let box=null;const run=d=>{let y=HD+46,bt=0,inb=false;for(const e of it){if(e.k==='sp')y+=e.h;else if(e.k==='b0'){bt=y;y+=28;inb=true}else if(e.k==='b1'){y+=14;box={y:bt,h:y-bt};inb=false}
+   else{for(const l of e.ls){y+=e.px*1.3;if(d){g.font=e.wt+' '+e.px+'px '+FF;g.fillStyle=e.col;g.textAlign='left';g.fillText(l,P+(inb?28:0),y)}}y+=e.gap}}return y};
+ const end=run(false);c.width=W;c.height=end+120;g.fillStyle='#ffffff';g.fillRect(0,0,W,c.height);
+ g.fillStyle='#eaf1ff';(g.roundRect||g.rect).call(g.beginPath()||g,P-4,box.y,W-2*P+8,box.h,26);g.fill();
+ g.fillStyle='#0b1b3a';g.fillRect(0,0,W,HD);g.font='800 56px '+FF;g.textAlign='left';let x=P;[['toolo','#fff'],['r','#60a5fa'],['a','#fff']].forEach(([t,col])=>{g.fillStyle=col;g.fillText(t,x,84);x+=g.measureText(t).width});
+ g.font='500 26px '+FF;g.fillStyle='#9db6e4';g.textAlign='right';g.fillText(dt,W-P,82);run(true);
+ g.fillStyle='#8a97b5';g.font='500 24px '+FF;g.textAlign='left';g.fillText('Calculated on Toolora  ·  free calculators for everyone',P,c.height-50);c.toBlob(cb,'image/png')}
+function pdfBlob(s){const cl=t=>String(t).replace(/₦/g,'NGN ').replace(/₹/g,'INR ').replace(/√/g,'sqrt').replace(/π/g,'pi').replace(/−/g,'-').replace(/≈/g,'~').replace(/≤/g,'<=').replace(/≥/g,'>=').replace(/→/g,'->').replace(/←/g,'<-').replace(/[⁰⁴⁵⁶⁷⁸⁹]/g,m=>'^'+'⁰¹²³⁴⁵⁶⁷⁸⁹'.indexOf(m)).replace(/[±]/g,'+/-').replace(/[✓]/g,'(ok)').replace(/[^\x20-\x7E\u00A0-\u00FF]/g,'?').replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)');
+ const L=[];const add=(t,sz,b,col)=>{const mx=Math.floor(495/(sz*(b?.56:.5)));String(t).split('\n').forEach(par=>{let l='';par.split(' ').forEach(w=>{const n=l?l+' '+w:w;if(n.length>mx&&l){L.push({t:l,sz,b,col});l=w}else l=n});L.push({t:l,sz,b,col})})};
+ add(s.title,20,1,'0.04 0.11 0.23');s.inputs.slice(0,10).forEach(i=>add(i[0]+': '+i[1],11,0,'0.3 0.36 0.48'));L.push({t:'',sz:8});s.res.forEach((l,i)=>add(l,i?11:16,i?0:1,i?'0.3 0.36 0.48':'0.15 0.39 0.92'));
+ if(s.steps.length){L.push({t:'',sz:10});add('Working',13,1,'0.04 0.11 0.23');s.steps.slice(0,40).forEach(l=>add(l,10.5,0,'0.2 0.25 0.35'))}
+ const pages=[];let cur=[],y=770;L.forEach(l=>{if(y<70){pages.push(cur);cur=[];y=790}cur.push([l,y]);y-=l.sz*1.5});pages.push(cur);
+ const objs=[];const o=(n,s)=>objs[n-1]=s;o(1,'<< /Type /Catalog /Pages 2 0 R >>');const kids=pages.map((_,i)=>(5+i*2)+' 0 R').join(' ');o(2,'<< /Type /Pages /Kids ['+kids+'] /Count '+pages.length+' >>');
+ o(3,'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');o(4,'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+ pages.forEach((pg,i)=>{let st='0.04 0.11 0.23 rg 0 812 595 30 re f BT /F2 14 Tf 1 1 1 rg 50 821 Td (toolora) Tj ET\n';pg.forEach(([l,yy])=>{if(l.t)st+='BT /F'+(l.b?2:1)+' '+l.sz+' Tf '+l.col+' rg 50 '+yy.toFixed(1)+' Td ('+cl(l.t)+') Tj ET\n'});
+  st+='BT /F1 8 Tf 0.5 0.55 0.65 rg 50 28 Td (Calculated on Toolora - page '+(i+1)+' of '+pages.length+') Tj ET';o(6+i*2,'<< /Length '+st.length+' >>\nstream\n'+st+'\nendstream');o(5+i*2,'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents '+(6+i*2)+' 0 R >>')});
+ let out='%PDF-1.4\n',off=[];objs.forEach((s,i)=>{off.push(out.length);out+=(i+1)+' 0 obj\n'+s+'\nendobj\n'});const xr=out.length;out+='xref\n0 '+(objs.length+1)+'\n0000000000 65535 f \n'+off.map(n=>String(n).padStart(10,'0')+' 00000 n \n').join('')+'trailer\n<< /Size '+(objs.length+1)+' /Root 1 0 R >>\nstartxref\n'+xr+'\n%%EOF';
+ const u=new Uint8Array(out.length);for(let i=0;i<out.length;i++)u[i]=out.charCodeAt(i)&255;return new Blob([u],{type:'application/pdf'})}
+async function shareFile(blob,name,title){const f=new File([blob],name,{type:blob.type});if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title});return'shared'}catch(e){if(e&&e.name==='AbortError')return'cancel'}}
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);return'saved'}
+function exportUI(slug,form,t,txt,flash,copy){const pop=$('#pop');
+ const link=()=>{const p=new URLSearchParams();form.querySelectorAll('input[id],select[id],textarea[id]').forEach(e=>{if(e.value&&e.id!=='msearch'&&!e.id.startsWith('e_'))p.set(e.id,e.value)});if(typeof BMI!=='undefined'&&BMI.u==='us'&&slug==='bmi-calculator')p.set('u','us');return location.href.split('?')[0].split('#')[0]+(p.toString()?'?'+p:'')};
+ const ctext=()=>t.name+': '+txt();const ok=()=>txt()!=='—';
+ $('#copy').onclick=()=>{if(!ok())return toast('Enter your values first');copy(ctext()).then(()=>toast('Result copied ✓')).catch(()=>toast('Could not copy'));track('copy',{tool:slug})};
+ $('#share').onclick=e=>{e.stopPropagation();pop.hidden=!pop.hidden};document.addEventListener('click',e=>{if(!pop.contains(e.target))pop.hidden=true});
+ pop.onclick=async e=>{const b=e.target.closest('button');if(!b)return;pop.hidden=true;const a=b.dataset.a;track('share',{tool:slug,how:a});
+  if(!ok()&&a!=='link')return toast('Enter your values first');const s=snap(t,form),nm=slug+'-result';
+  const done=r=>toast(r==='saved'?'Saved to your device ✓':r==='shared'?'':'');
+  if(a==='img')drawImg(s,blob=>shareFile(blob,nm+'.png',t.name).then(done));
+  else if(a==='pdf')shareFile(pdfBlob(s),nm+'.pdf',t.name).then(done);
+  else if(a==='link'){const u=link();try{if(navigator.share){await navigator.share({title:t.name+' | Toolora',text:ok()?ctext():t.name,url:u});return}}catch(x){if(x&&x.name==='AbortError')return}copy(u).then(()=>toast('Link copied ✓')).catch(()=>toast('Could not copy'))}
+  else copy(ctext()).then(()=>toast('Text copied ✓')).catch(()=>toast('Could not copy'))}}
+return{SOLVERS,exportUI,RICONS}})();
+const SOLVERS=TX.SOLVERS,exportUI=TX.exportUI,RICONS=TX.RICONS;
+
+/*END-NEW*/
 initChrome();initHome();initTool();
 
 </script></body></html>
