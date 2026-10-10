@@ -26,3 +26,8 @@ V1.4 (Part 1: Mathematics)
 - New: Algebra Solver, Linear Equation, Quadratic Equation, Simultaneous Equations, Change the Subject, plus the Mathematics page (mathematics.html)
 - Copy and Share are icons inside the result box. Share offers image, PDF, link and text
 - source/math.js = algebra engine, source/solvers.js = screens, graphs and sharing
+
+V1.5
+- Fixed: the "solve for / subject" dropdown no longer types letters into the equation box
+- Answers are typeset like a textbook (stacked fractions, square roots, boxed answer)
+- "Show workings" button hides/shows the step-by-step; 2-equation systems use the multiply-and-subtract method
